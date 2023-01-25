@@ -28,4 +28,10 @@ export class AppController {
     const tarhelyRepo = this.dataSource.getRepository(Tarhely);
     return tarhelyRepo.find();
   }
+
+  @Get('/api/tarhely/:id')
+  showIdTarhely(@Param('id') id: number) {
+    const tarhelyRepo = this.dataSource.getRepository(Tarhely);
+    return tarhelyRepo.find();
+  }
 }
