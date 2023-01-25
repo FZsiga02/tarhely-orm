@@ -6,6 +6,7 @@ import {
    Get, 
    Param,
    Post, 
+   Put, 
    Render 
 } from '@nestjs/common';
 import { DataSource } from 'typeorm';
@@ -33,5 +34,12 @@ export class AppController {
   showIdTarhely(@Param('id') id: number) {
     const tarhelyRepo = this.dataSource.getRepository(Tarhely);
     return tarhelyRepo.find();
+  }
+
+  @Post('/api/tarhely/:id')
+  newTarhely(@Body() tarhely: Tarhely) {
+    tarhely.id = undefined;
+    const tarhelyRepo = this.dataSource.getRepository(Tarhely);
+    tarhelyRepo.save(tarhely);
   }
 }
