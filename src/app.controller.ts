@@ -42,4 +42,10 @@ export class AppController {
     const tarhelyRepo = this.dataSource.getRepository(Tarhely);
     tarhelyRepo.save(tarhely);
   }
+
+  @Delete('/api/tarhely/:id')
+  deleteTarhely(@Param('id') id: number) {
+    const tarhelyRepo = this.dataSource.getRepository(Tarhely);
+    tarhelyRepo.delete(id);
+  }
 }
